@@ -129,4 +129,42 @@ declare namespace API {
     total?: number;
     success?: boolean;
   };
+
+  type GoodTypeList = {
+    data?: GoodTypeItem[];
+    /** 列表的内容总数 */
+    total?: number;
+    success?: boolean;
+  };
+
+  type GoodTypeItem = {
+    id?: number;
+    name?: string;
+  };
+
+  type GoodList = {
+    data?: GoodListItem[];
+    /** 列表的内容总数 */
+    total?: number;
+    success?: boolean;
+  };
+
+  type GoodListItem = {
+    id?: string;
+    name?: string;
+    cover?: string;
+    intro?: boolean;
+    stock?: string;
+    price?: string;
+    typeId?: int;
+    count?: int;
+  };
+
+
+  type ShoppingCarOpParams = {
+    op?: string
+    goodId?: string
+    uid?: string
+    num?: int;
+  }
 }

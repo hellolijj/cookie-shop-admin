@@ -63,9 +63,9 @@ const Register: React.FC = () => {
             </div>
             <div className={styles.content}>
                 <LoginForm
-                    logo="https://github.githubassets.com/images/modules/logos_page/Octocat.png"
-                    title="Github"
-                    subTitle="全球最大的代码托管平台"
+                    logo="/logo.png"
+                    title="蛋糕商城"
+                    subTitle="该商城系统由湖北理工学院计算机李俊君老师研发"
                     initialValues={{
                         asAdmin: false,
                     }}

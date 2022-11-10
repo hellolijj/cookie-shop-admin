@@ -1,11 +1,12 @@
 import { listUser, removeUser, updateUser } from '@/services/cookie-shop-admin/user';
+import { listGoodType } from '@/services/cookie-shop-admin/good';
 
 import type { ActionType, ProColumns } from '@ant-design/pro-components';
 import {
   PageContainer,
   EditableProTable,
 } from '@ant-design/pro-components';
-import { FormattedMessage, useIntl } from '@umijs/max';
+import { useIntl } from '@umijs/max';
 import { message,Popconfirm } from 'antd';
 import React, { useRef, useState } from 'react';
 
@@ -56,7 +57,7 @@ const handleRemove = async (row: API.UserListItem) => {
   }
 };
 
-const UserList: React.FC = () => {
+const GoodType: React.FC = () => {
   const actionRef = useRef<ActionType>();
   const [editableKeys, setEditableRowKeys] = useState<React.Key[]>([]);
   /**
@@ -65,42 +66,16 @@ const UserList: React.FC = () => {
    * */
   const intl = useIntl();
 
-  const columns: ProColumns<API.UserListItem>[] = [
+  const columns: ProColumns<API.GoodTypeItem>[] = [
     {
-      title: "用户名",
-      dataIndex: 'username',
-      tip: 'The rule name is the unique key',
+      title: "id",
+      dataIndex: 'id',
       readonly: true,
-      render: (dom, entity) => {
-        return (
-          <a>
-            {dom}
-          </a>
-        );
-      },
+      hideInSearch: true,
     },
     {
-      title: "真实姓名",
+      title: "分类名",
       dataIndex: 'name',
-    },
-    {
-      title: "电话",
-      dataIndex: 'phone',
-    },
-    {
-      title: <FormattedMessage id="pages.searchTable.titleStatus" defaultMessage="Status" />,
-      dataIndex: 'isvalidate',
-      hideInForm: true,
-      valueEnum: {
-        1: {
-          text: "有效",
-          status: 'Processing',
-        },
-        0: {
-          text: "无效",
-          status: 'Error',
-        },
-      },
     },
     {
       title: '操作',
@@ -127,7 +102,7 @@ const UserList: React.FC = () => {
 
   return (
     <PageContainer>
-      <EditableProTable<API.UserListItem, API.PageParams>
+      <EditableProTable<API.GoodTypeItem, API.PageParams>
         rowKey="id"
         headerTitle={intl.formatMessage({
           id: 'pages.searchTable.title',
@@ -138,7 +113,7 @@ const UserList: React.FC = () => {
         search={{
           labelWidth: 120,
         }}
-        request={listUser}
+        request={listGoodType}
         columns={columns}
         editable={{
           type: 'multiple',
@@ -158,4 +133,4 @@ const UserList: React.FC = () => {
   );
 };
 
-export default UserList;
+export default GoodType;

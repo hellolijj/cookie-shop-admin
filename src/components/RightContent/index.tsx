@@ -1,10 +1,12 @@
-import { QuestionCircleOutlined } from '@ant-design/icons';
+import { FilterOutlined, ShoppingCartOutlined } from '@ant-design/icons';
 import { SelectLang, useModel } from '@umijs/max';
 import { Space } from 'antd';
 import React from 'react';
 import HeaderSearch from '../HeaderSearch';
 import Avatar from './AvatarDropdown';
 import styles from './index.less';
+import NoticeIconView from '../NoticeIcon'
+import ShoppingCarIconView from '../ShoppingCar'
 
 export type SiderTheme = 'light' | 'dark';
 
@@ -26,34 +28,18 @@ const GlobalHeaderRight: React.FC = () => {
       <HeaderSearch
         className={`${styles.action} ${styles.search}`}
         placeholder="站内搜索"
-        defaultValue="umi ui"
+        defaultValue=""
         options={[
-          { label: <a href="https://umijs.org/zh/guide/umi-ui.html">umi ui</a>, value: 'umi ui' },
-          {
-            label: <a href="next.ant.design">Ant Design</a>,
-            value: 'Ant Design',
-          },
-          {
-            label: <a href="https://protable.ant.design/">Pro Table</a>,
-            value: 'Pro Table',
-          },
-          {
-            label: <a href="https://prolayout.ant.design/">Pro Layout</a>,
-            value: 'Pro Layout',
-          },
+          { label: <a href="/good/shop/1">经典法式</a>, value: '' },
+          { label: <a href="/good/shop/2">精品慕斯</a>, value: '' },
+          { label: <a href="/good/shop/3">奶油戚风</a>, value: '' },
+          { label: <a href="/good/shop/4">情人系列</a>, value: '' },
         ]}
         // onSearch={value => {
         //   console.log('input', value);
         // }}
       />
-      <span
-        className={styles.action}
-        onClick={() => {
-          window.open('https://pro.ant.design/docs/getting-started');
-        }}
-      >
-        <QuestionCircleOutlined />
-      </span>
+      <ShoppingCarIconView />
       <Avatar />
       <SelectLang className={styles.action} />
     </Space>
